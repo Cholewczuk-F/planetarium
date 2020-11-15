@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class = "navbar_container">
-        <div class = "navbar">
+        <div class = "navbar_btns">
             <a href = "user/login.php">Zaloguj</a>
             <a href = "user/register.php">Rejestracja</a>
             <a href = "index.php">Strona główna</a>

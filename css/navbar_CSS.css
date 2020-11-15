@@ -1,4 +1,16 @@
-#navbar_logo img {
-    width: 50px;
-    height: 50px;
+.navbar_container {
+    width: 70%;
+    height: 100px;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+.navbar_btns {
+
+}
+.navbar_logo {
+    float: left;
+}
+.navbar_logo img {
+    width: 100px;
+    height: 100px;
 }

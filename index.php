@@ -5,7 +5,7 @@
     <title>Planetarium</title>
     <meta charset = "utf-8">
     <link rel = "stylesheet" href = "css/navbar_CSS.css">
-    <link rel = "stylesheet" href = "css/index_page_CSS.css"
+    <link rel = "stylesheet" href = "css/index_page_CSS.css">
     
 </head>
 <body>
@@ -20,6 +20,7 @@
         </div>
     </div>
     <div class = "main_page_container">
+        <div class = "msg">Przejdź do:</div>
         <div class = "forum_page_container">
             <a href = "pages/forumIndex.php">Forum</a>
         </div>

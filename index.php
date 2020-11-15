@@ -22,6 +22,7 @@
     <div class = "main_page_container">
         <div class = "msg">Przejdź do:</div>
         <div class = "forum_page_container">
+            <div class = "forum_page">
             <a href = "pages/forumIndex.php">Forum</a>
         </div>
         <div class = "bodies_page_container">

@@ -1,14 +1,25 @@
 .navbar_container {
+    background-color: rgba(88, 24, 69, 0.7);
     width: 70%;
-    height: 100px;
+    height: 130px;
     margin-left: 15%;
     margin-right: 15%;
 }
 .navbar_btns {
-
+    background-color: rgba( 144, 12, 63, 1);
+    height: 25px;
+    padding-top: 5px;
+    text-align: center;
+}
+.navbar_btns a {
+    text-decoration: none;
+    color: white;
+    margin-left: 100px;
+    margin-right: 100px
 }
 .navbar_logo {
     float: left;
+    margin-left: 41%;
 }
 .navbar_logo img {
     width: 100px;

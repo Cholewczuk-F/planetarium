@@ -1,18 +1,17 @@
-<?php
-include "db/migrations/db_connect.php"
-?>
-
+<?php include "db/migrations/db_connect.php" ?>
 <!DOCTYPE html>
 <html>
-<?php include('templates/header.php') ?>
 <head>
     <meta charset = "utf-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 </head>
 <body>
-    <h1>Test gita</h1>
+    <div class = "navbar">
+        <a href="user/login.php">Login</a>
+        <a href="user/register.php">Register</a>
+        <a href="index.php">Home</a>
+    </div>
 </body>
 
-
-<?php include('templates/footer.php') ?>
 
 </html>

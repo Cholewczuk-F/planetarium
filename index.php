@@ -2,14 +2,21 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>Planetarium</title>
     <meta charset = "utf-8">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel = "stylesheet" href = "css/navbar_CSS.css">
+    
 </head>
 <body>
-    <div class = "navbar">
-        <a href="user/login.php">Login</a>
-        <a href="user/register.php">Register</a>
-        <a href="index.php">Home</a>
+    <div class = "navbar_container">
+        <div class = "navbar">
+            <a href = "user/login.php">Zaloguj</a>
+            <a href = "user/register.php">Rejestracja</a>
+            <a href = "index.php">Strona główna</a>
+        </div>
+        <div class = "navbar_logo">
+            <img src = "img/logo.png">
+        </div>
     </div>
 </body>
 

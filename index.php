@@ -1,10 +1,11 @@
-<?php include "db/migrations/db_connect.php" ?>
+<?php require "db/db_connect.php" ?>
 <!DOCTYPE html>
 <html>
 <head>
     <title>Planetarium</title>
     <meta charset = "utf-8">
     <link rel = "stylesheet" href = "css/navbar_CSS.css">
+    <link rel = "stylesheet" href = "css/index_page_CSS.css"
     
 </head>
 <body>
@@ -16,6 +17,14 @@
         </div>
         <div class = "navbar_logo">
             <img src = "img/logo.png">
+        </div>
+    </div>
+    <div class = "main_page_container">
+        <div class = "forum_page_container">
+            <a href = "pages/forumIndex.php">Forum</a>
+        </div>
+        <div class = "bodies_page_container">
+            <a href = "pages/bodiesIndex.php">Planetarium</a>
         </div>
     </div>
 </body>

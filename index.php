@@ -1,11 +1,5 @@
 <?php
-$products = [
-    ['name' => 'shiny star', 'price' => 20],
-    ['name' => 'not a thing', 'price' => 0],
-    ['name' => 'something', 'price' => 40]
-];
-
-echo '<br><br>';
+include "db/migrations/db_connect.php"
 ?>
 
 <!DOCTYPE html>

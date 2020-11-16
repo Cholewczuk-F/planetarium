@@ -30,11 +30,11 @@
             $_SESSION['login'] = $login;
 
             // Redirect to user dashboard page
-            header("Location: index.php");
+            header("Location: ../index.php");
         } else {
             echo "<div class='form'>
                   <h3>Niepoprawny login lub hasło.</h3><br/>
-                  <p class='link'>Click here to <a href='login.php'>Login</a> again.</p>
+                  <p class='link'>Nacisnij tutaj aby się <a href='login.php'>zalogować</a> ponownie.</p>
                   </div>";
         }
     } else {

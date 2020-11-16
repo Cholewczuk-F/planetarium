@@ -11,6 +11,13 @@
 <body>
     <div class = "navbar_container">
         <div class = "navbar_btns">
+            <?php
+                if(!empty($_COOKIE["CK_USER_LOGIN"])) {
+                    echo '<a href = "account.php">';
+                    echo $_COOKIE["CK_USER_LOGIN"];
+                    echo '</a>';
+                }
+            ?>
             <a href = "user/login.php">Zaloguj</a>
             <a href = "user/register.php">Rejestracja</a>
             <a href = "index.php">Strona główna</a>

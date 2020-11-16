@@ -5,14 +5,24 @@
     <title>Planetarium</title>
     <meta charset = "utf-8">
     <link rel = "stylesheet" href = "css/navbar_CSS.css">
-    <link rel = "stylesheet" href = "css/index_page_CSS.css"
+    <link rel = "stylesheet" href = "css/index_page_CSS.css">
     
 </head>
 <body>
     <div class = "navbar_container">
         <div class = "navbar_btns">
-            <a href = "user/login.php">Zaloguj</a>
-            <a href = "user/register.php">Rejestracja</a>
+            <?php
+                if(!empty($_COOKIE["CK_USER_LOGIN"])) {
+                    echo '<a href = "account.php">';
+                    echo $_COOKIE["CK_USER_LOGIN"];
+                    echo '</a>';
+                }else {
+                    echo '<a href = "authentication/login.php">';
+                    echo 'Zaloguj';
+                    echo '</a>';
+                }
+            ?>
+            <a href = "authentication/register.php">Rejestracja</a>
             <a href = "index.php">Strona główna</a>
         </div>
         <div class = "navbar_logo">
@@ -20,7 +30,9 @@
         </div>
     </div>
     <div class = "main_page_container">
+        <div class = "msg">Przejdź do:</div>
         <div class = "forum_page_container">
+            <div class = "forum_page">
             <a href = "pages/forumIndex.php">Forum</a>
         </div>
         <div class = "bodies_page_container">

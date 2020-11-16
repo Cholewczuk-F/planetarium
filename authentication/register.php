@@ -30,6 +30,7 @@
         $password = mysqli_real_escape_string($con, $password);
 
         $create_date = date("Y-m-d H:i:s");
+
         $query    = "INSERT into `users` (user_login, email, role_id, user_img, user_hash, create_date)
                      VALUES ('$user_login', '$email', '$role_id', '$user_img', '" . md5($password) . "', '$create_date')";
         $result   = mysqli_query($con, $query);
@@ -44,7 +45,7 @@
                   <h3>Niepoprawnie wprowadzono dane.</h3><br/>
                   $query</br>
                   $result</br>
-                  <p class='link'>Nacisnij tutaj by się <a href='registration.php'>zarejestrować</a> ponownie.</p>
+                  <p class='link'>Nacisnij tutaj aby się <a href='registration.php'>zarejestrować</a> ponownie.</p>
                   </div>";
         }
     } else {

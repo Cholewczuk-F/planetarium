@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 15, 2020 at 07:40 PM
+-- Generation Time: Nov 16, 2020 at 07:33 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -132,6 +132,14 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
 --
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`user_ID`, `user_login`, `email`, `role_id`, `user_img`, `user_hash`, `create_date`) VALUES
+(1, 'sad', 'sad@gmail.com', 3, 'blank_avatar.jpg', 0x3439663062616432393936383763363233333431383231373862666437356438, '2020-11-16'),
+(2, '123', '123@gmail.com', 3, 'blank_avatar.jpg', 0x3230326362393632616335393037356239363462303731353264323334623730, '2020-11-16');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -190,8 +198,7 @@ ALTER TABLE `roles`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`user_ID`),
-  ADD KEY `role_id` (`role_id`);
+  ADD PRIMARY KEY (`user_ID`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -220,6 +227,12 @@ ALTER TABLE `forumposts`
 --
 ALTER TABLE `roles`
   MODIFY `role_ID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `user_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
@@ -263,12 +276,6 @@ ALTER TABLE `galleries`
 --
 ALTER TABLE `images`
   ADD CONSTRAINT `Images_ibfk_1` FOREIGN KEY (`gallery_id`) REFERENCES `galleries` (`gallery_ID`);
-
---
--- Constraints for table `users`
---
-ALTER TABLE `users`
-  ADD CONSTRAINT `Users_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `roles` (`role_ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

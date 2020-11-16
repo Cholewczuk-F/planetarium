@@ -36,15 +36,15 @@
 
         if ($result) {
             echo "<div class='form'>
-                  <h3>You are registered successfully.</h3><br/>
-                  <p class='link'>Click here to <a href='login.php'>Login</a></p>
+                  <h3>Zarejestrowałeś się!</h3><br/>
+                  <p class='link'>Nacisnij tutaj aby się <a href='login.php'>Zalogować</a></p>
                   </div>";
         } else {
             echo "<div class='form'>
-                  <h3>Required fields are missing.</h3><br/>
+                  <h3>Niepoprawnie wprowadzono dane.</h3><br/>
                   $query</br>
                   $result</br>
-                  <p class='link'>Click here to <a href='registration.php'>registration</a> again.</p>
+                  <p class='link'>Nacisnij tutaj by się <a href='registration.php'>zarejestrować</a> ponownie.</p>
                   </div>";
         }
     } else {

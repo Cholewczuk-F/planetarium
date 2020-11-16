@@ -16,9 +16,12 @@
                     echo '<a href = "account.php">';
                     echo $_COOKIE["CK_USER_LOGIN"];
                     echo '</a>';
+                }else {
+                    echo '<a href = "authentication/login.php">';
+                    echo 'Zaloguj';
+                    echo '</a>';
                 }
             ?>
-            <a href = "user/login.php">Zaloguj</a>
             <a href = "user/register.php">Rejestracja</a>
             <a href = "index.php">Strona główna</a>
         </div>

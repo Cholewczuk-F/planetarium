@@ -1,45 +1,23 @@
-<?php require "db/db_connect.php" ?>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Planetarium</title>
-    <meta charset = "utf-8">
-    <link rel = "stylesheet" href = "css/navbar_CSS.css">
-    <link rel = "stylesheet" href = "css/index_page_CSS.css">
-    
-</head>
-<body>
-    <div class = "navbar_container">
-        <div class = "navbar_btns">
-            <?php
-                if(!empty($_COOKIE["CK_USER_LOGIN"])) {
-                    echo '<a href = "account.php">';
-                    echo $_COOKIE["CK_USER_LOGIN"];
-                    echo '</a>';
-                }else {
-                    echo '<a href = "authentication/login.php">';
-                    echo 'Zaloguj';
-                    echo '</a>';
-                }
-            ?>
-            <a href = "authentication/register.php">Rejestracja</a>
-            <a href = "index.php">Strona główna</a>
+<?php
+// not required on frontpage
+
+// require "db/db_connect.php";
+// require "authentication/auth_session.php";
+
+require "templates/header.php";
+?>
+
+<div class="main_page_container">
+    <div class="msg">Przejdź do:</div>
+    <div class="forum_page_container">
+        <div class="forum_page">
+            <a href="pages/forumIndex.php">Forum</a>
         </div>
-        <div class = "navbar_logo">
-            <img src = "img/logo.png">
+        <div class="bodies_page_container">
+            <a href="pages/bodiesIndex.php">Planetarium</a>
         </div>
     </div>
-    <div class = "main_page_container">
-        <div class = "msg">Przejdź do:</div>
-        <div class = "forum_page_container">
-            <div class = "forum_page">
-            <a href = "pages/forumIndex.php">Forum</a>
-        </div>
-        <div class = "bodies_page_container">
-            <a href = "pages/bodiesIndex.php">Planetarium</a>
-        </div>
-    </div>
-</body>
+    </body>
 
 
-</html>
+    </html>

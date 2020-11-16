@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 16, 2020 at 07:33 PM
+-- Generation Time: Nov 17, 2020 at 12:35 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -115,6 +115,15 @@ CREATE TABLE `roles` (
   `user_role` varchar(255) COLLATE utf8_polish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
+--
+-- Dumping data for table `roles`
+--
+
+INSERT INTO `roles` (`role_ID`, `user_role`) VALUES
+(1, 'admin'),
+(2, 'mod'),
+(3, 'user');
+
 -- --------------------------------------------------------
 
 --
@@ -126,18 +135,10 @@ CREATE TABLE `users` (
   `user_login` varchar(255) COLLATE utf8_polish_ci NOT NULL,
   `email` varchar(256) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `role_id` int(11) NOT NULL,
-  `user_img` varchar(255) COLLATE utf8_polish_ci NOT NULL,
+  `user_img` int(11) DEFAULT NULL,
   `user_hash` varbinary(255) NOT NULL,
   `create_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`user_ID`, `user_login`, `email`, `role_id`, `user_img`, `user_hash`, `create_date`) VALUES
-(1, 'sad', 'sad@gmail.com', 3, 'blank_avatar.jpg', 0x3439663062616432393936383763363233333431383231373862666437356438, '2020-11-16'),
-(2, '123', '123@gmail.com', 3, 'blank_avatar.jpg', 0x3230326362393632616335393037356239363462303731353264323334623730, '2020-11-16');
 
 --
 -- Indexes for dumped tables
@@ -198,7 +199,9 @@ ALTER TABLE `roles`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`user_ID`);
+  ADD PRIMARY KEY (`user_ID`),
+  ADD KEY `role_id` (`role_id`),
+  ADD KEY `user_img` (`user_img`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -226,13 +229,13 @@ ALTER TABLE `forumposts`
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `role_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `role_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `user_ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
@@ -276,6 +279,13 @@ ALTER TABLE `galleries`
 --
 ALTER TABLE `images`
   ADD CONSTRAINT `Images_ibfk_1` FOREIGN KEY (`gallery_id`) REFERENCES `galleries` (`gallery_ID`);
+
+--
+-- Constraints for table `users`
+--
+ALTER TABLE `users`
+  ADD CONSTRAINT `role_id` FOREIGN KEY (`role_id`) REFERENCES `roles` (`role_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `user_img` FOREIGN KEY (`user_img`) REFERENCES `images` (`image_ID`) ON DELETE SET NULL ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

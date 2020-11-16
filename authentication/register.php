@@ -18,7 +18,7 @@
         //escapes special characters in a string
         $user_login = mysqli_real_escape_string($con, $user_login);
 
-        $role_id = 1;
+        $role_id = 3;
 
         $user_img = 'blank_avatar.jpg';
         $user_img = mysqli_real_escape_string($con, $user_img);

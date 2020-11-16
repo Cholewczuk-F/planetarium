@@ -22,7 +22,7 @@
                     echo '</a>';
                 }
             ?>
-            <a href = "user/register.php">Rejestracja</a>
+            <a href = "authentication/register.php">Rejestracja</a>
             <a href = "index.php">Strona główna</a>
         </div>
         <div class = "navbar_logo">

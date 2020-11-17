@@ -1,27 +1,27 @@
 .navbar_container {
-    background-color: rgba(88, 88, 88, 0.8);
-    width: 70%;
-    height: 130px;
-    margin-left: 15%;
-    margin-right: 15%;
+  background-color: rgba(88, 88, 88, 0.8);
+  width: 80%;
+  height: 130px;
+  margin-left: 10%;
+  margin-right: 10%;
 }
 .navbar_btns {
-    background-color: rgba( 104, 22, 63, 1);
-    height: 25px;
-    padding-top: 5px;
-    text-align: center;
+  background-color: rgba(104, 22, 63, 1);
+  height: 25px;
+  padding-top: 5px;
+  text-align: center;
 }
 .navbar_btns a {
-    text-decoration: none;
-    color: white;
-    margin-left: 100px;
-    margin-right: 100px
+  text-decoration: none;
+  color: white;
+  margin-left: 70px;
+  margin-right: 70px;
 }
 .navbar_logo {
-    float: left;
-    margin-left: 41%;
+  float: left;
+  margin-left: 41%;
 }
 .navbar_logo img {
-    width: 100px;
-    height: 100px;
+  width: 100px;
+  height: 100px;
 }

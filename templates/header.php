@@ -22,17 +22,24 @@
             //     echo 'Zaloguj';
             //     echo '</a>';
             // }
+            $btns_segment = '';
 
             session_start();
             if (!isset($_SESSION["login"])) {
-                echo '<a href = "authentication/login.php">Zaloguj Się</a>';
+                $btns_segment = '<a href = "authentication/login.php">Zaloguj Się</a>'
+                    . '<a href="authentication/register.php">Rejestracja</a>';
             } else {
-                echo '<a href = "authentication/logout.php">Wyloguj</a>';
+                $btns_segment = '<a href = "authentication/logout.php">Wyloguj</a>';
+                if ($_SESSION['role_id'] == 1) {
+                    $btns_segment = $btns_segment . '<a href="#">Panel Administratora</a>';
+                }
             }
+            echo $btns_segment;
+
             ?>
 
 
-            <a href="authentication/register.php">Rejestracja</a>
+
             <a href="index.php">Strona główna</a>
         </div>
         <div class="navbar_logo">

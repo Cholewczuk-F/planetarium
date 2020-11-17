@@ -10,6 +10,7 @@
 <body>
     <?php
     require('../db/db_connect.php');
+    include '../utils/console_log.php';
     session_start();
 
     // When form submitted, check and create user session.
@@ -27,7 +28,11 @@
         $rows = mysqli_num_rows($result);
 
         if ($rows == 1) {
+            $entry = mysqli_fetch_array($result);
             $_SESSION['login'] = $login;
+            $_SESSION['role_id'] = $entry['role_id'];
+            // print_r($row);
+            // console_log($row['role_id']);
 
             // Redirect to user dashboard page
             header("Location: ../index.php");

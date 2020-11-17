@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 17, 2020 at 12:35 AM
+-- Generation Time: Nov 17, 2020 at 01:19 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -91,6 +91,13 @@ CREATE TABLE `galleries` (
   `post_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
+--
+-- Dumping data for table `galleries`
+--
+
+INSERT INTO `galleries` (`gallery_ID`, `post_id`) VALUES
+(1, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -99,10 +106,17 @@ CREATE TABLE `galleries` (
 
 CREATE TABLE `images` (
   `image_ID` int(11) NOT NULL,
-  `gallery_id` int(11) NOT NULL,
+  `gallery_id` int(11) DEFAULT NULL,
   `image_name` varchar(255) COLLATE utf8_polish_ci NOT NULL,
   `image_path` varchar(255) COLLATE utf8_polish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+--
+-- Dumping data for table `images`
+--
+
+INSERT INTO `images` (`image_ID`, `gallery_id`, `image_name`, `image_path`) VALUES
+(1, 0, 'blank_avatar.jpg', '/img/blank_avatar.jpg');
 
 -- --------------------------------------------------------
 
@@ -220,10 +234,28 @@ ALTER TABLE `celestialbodies`
   MODIFY `body_ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `comments`
+--
+ALTER TABLE `comments`
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `forumposts`
 --
 ALTER TABLE `forumposts`
   MODIFY `post_ID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `galleries`
+--
+ALTER TABLE `galleries`
+  MODIFY `gallery_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `images`
+--
+ALTER TABLE `images`
+  MODIFY `image_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `roles`
@@ -235,7 +267,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `user_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables

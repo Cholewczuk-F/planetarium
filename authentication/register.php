@@ -41,8 +41,6 @@
         } else {
             echo "<div class='form'>
                   <h3>Niepoprawnie wprowadzono dane.</h3><br/>
-                  $query</br>
-                  $result</br>
                   <p class='link'>Nacisnij tutaj aby się <a href='registration.php'>zarejestrować</a> ponownie.</p>
                   </div>";
         }

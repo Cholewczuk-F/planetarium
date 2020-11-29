@@ -5,7 +5,7 @@
     <title>Planetarium</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="<?php echo SITE_URL_ROOT; ?>css/navbar_CSS.css">
-    <link rel="stylesheet" href="<?php echo SITE_URL_ROOT; ?>css/index_page_CSS.css">
+    
 
 </head>
 

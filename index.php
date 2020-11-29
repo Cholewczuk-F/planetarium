@@ -1,8 +1,13 @@
 <?php
 include_once('config.php');
-include(SITE_ROOT . 'templates\header.php');
-?>
+include(SITE_ROOT . 'templates/header.php');
 
+?>
+<html>
+<head>
+<link rel="stylesheet" href="<?php echo SITE_URL_ROOT; ?>css/index_page_CSS.css">
+</head>
+<body>
 <div class="main_page_container">
     <div class="msg">Przejdź do:</div>
     <div class="forum_page_container">

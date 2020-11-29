@@ -1,7 +1,8 @@
 <?php
 include_once('../config.php');
-require(SITE_ROOT . 'db\db_connect.php');
-include(SITE_ROOT . 'templates\header.php');
+include(SITE_ROOT . 'db/db_connect.php');
+include(SITE_ROOT . 'templates/header.php');
+
 
 // When form submitted, insert values into the database.
 if (isset($_REQUEST['user_login'])) {

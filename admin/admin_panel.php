@@ -8,7 +8,7 @@ require(SITE_ROOT . 'authentication/auth_session_admin.php'); // elevated authen
 <html>
 
 <head>
-    <title>Title</title>
+    <title>Admin Panel</title>
 </head>
 
 <body>

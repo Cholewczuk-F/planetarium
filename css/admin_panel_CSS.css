@@ -1,0 +1,21 @@
+table {
+    width: 716px; /* 140px * 5 column + 16px scrollbar width */
+    width: 816px; 
+    border-spacing: 0;
+}
+
+tbody, thead tr { display: block; }
+
+tbody {
+    height: 100px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+tbody td, thead th {
+    width: 160px;
+}
+
+thead th:last-child {
+    width: 176px; /* 140px + 16px scrollbar width */
+}

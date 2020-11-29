@@ -1,10 +1,6 @@
 <?php
-// not required on frontpage
-
-// require "db/db_connect.php";
-// require "authentication/auth_session.php";
-
-require "templates/header.php";
+include_once('config.php');
+include(SITE_ROOT . 'templates\header.php');
 ?>
 
 <div class="main_page_container">

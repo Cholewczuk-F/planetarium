@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 17, 2020 at 01:19 AM
+-- Generation Time: Nov 29, 2020 at 11:47 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -74,6 +74,7 @@ CREATE TABLE `comments` (
 CREATE TABLE `forumposts` (
   `post_ID` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
+  `title` varchar(255) COLLATE utf8_polish_ci NOT NULL,
   `post_content` varchar(2555) COLLATE utf8_polish_ci NOT NULL,
   `post_date` date NOT NULL,
   `category_id` int(11) NOT NULL,
@@ -153,6 +154,15 @@ CREATE TABLE `users` (
   `user_hash` varbinary(255) NOT NULL,
   `create_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`user_ID`, `user_login`, `email`, `role_id`, `user_img`, `user_hash`, `create_date`) VALUES
+(2, 'qwe', 'the@s2.com', 1, 1, 0x3736643830323234363131666339313961356435346630666639666261343436, '2020-11-17'),
+(3, 'asd', '123@gmail.com', 3, 1, 0x3738313536393665636266316339366536383934623737393435366433333065, '2020-11-17'),
+(4, '111', '111', 3, 1, 0x3639386435316131396438613132316365353831343939643762373031363638, '2020-11-28');
 
 --
 -- Indexes for dumped tables
@@ -267,7 +277,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `user_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables

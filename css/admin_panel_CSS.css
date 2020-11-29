@@ -1,3 +1,6 @@
+
+
+/* code for table scroll width ajustable height, edit line tbody { height: [x]px; } */
 table {
     width: 716px; /* 140px * 5 column + 16px scrollbar width */
     width: 816px; 
@@ -12,6 +15,10 @@ tbody {
     overflow-x: hidden;
 }
 
+td {
+    text-align: center;
+}
+
 tbody td, thead th {
     width: 160px;
 }
@@ -19,3 +26,4 @@ tbody td, thead th {
 thead th:last-child {
     width: 176px; /* 140px + 16px scrollbar width */
 }
+/* end of table code */

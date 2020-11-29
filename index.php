@@ -15,5 +15,4 @@ include(SITE_ROOT . 'templates\header.php');
     </div>
     </body>
 
-
     </html>

@@ -42,11 +42,11 @@ if(isset($_REQUEST['edited_role_value'])) {
                     </thead>
                     <tbody>
                         <?php
-                            $sql = 'SELECT * FROM users';
+                            $sql = 'SELECT U.user_login, R.user_role AS RoleName, U.create_date FROM users AS U LEFT JOIN roles AS R ON U.role_id = R.role_id';
                             foreach($con->query($sql) as $row) {
                                 echo "<tr>";
                                     echo "<td>" . $row['user_login']."</td>";
-                                    echo "<td>" . $row['role_id']."</td>";
+                                    echo "<td>" . $row['RoleName']."</td>";
                                     echo "<td>" . $row['create_date']."</td>";
                                     echo "<td>";
                                     ?>

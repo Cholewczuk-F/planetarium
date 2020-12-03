@@ -3,24 +3,71 @@ include('../db/db_connect.php');
 include('../config.php');
 include('../templates/header.php');
 
+$bodiesArray = array();
+
+$sql = "SELECT * FROM celestialbodies";
+$res = $con->query($sql);
+
+while(($row = $res->fetch_array(MYSQLI_ASSOC))) {
+    $bodiesArray[$row['body_ID']] = $row['name'];
+}
+var_dump($bodiesArray);
+
 ?>
 
 <html>
 <head>
     <title>Galeria</title>
+    <link rel="stylesheet" href="../css/bodies_gallery_index_CSS.css">
+
 </head>
 <body>
 <div class = "main_container">
-    <div class = "gallery_container">
-        <div class = "gallery_thumbnail">
+<div class = "main_gallery_container">
+<?php
+    $sql = "SELECT * FROM celestialbodies";
+    foreach($con->query($sql) as $row) {
+        echo '<div class = "gallery_container">';
+            echo '<div class = "gallery_thumbnail">';
+                if(file_exists("../img/thumbnail_".$bodiesArray[$row['body_ID']].".png")) {
+                    echo '<img src = "../img/thumbnail_'.$bodiesArray[$row['body_ID']].'.png">';
+                } elseif(file_exists("../img/thumbnail_".$bodiesArray[$row['body_ID']].".jpg")) {
+                    echo '<img src = "../img/thumbnail_'.$bodiesArray[$row['body_ID']].'.jpg">';
+                } else {
+                    echo "chuj";
+                }
+            echo '</div>';
+            echo '<div class = "gallery_name">';
+                echo '<p class = "gallery_p">';
+                    echo $row["name"];
+                echo '</p>';
+            echo '</div>';
+            echo '<div class = "gallery_submitButton">';
+                echo '<form action = "body_'.$row["body_ID"].' method = "GET">';
+                    echo '<input type = "submit" value = "Sprawdź">';
+                echo '</form>';
+
+    }
+        /*<div class = "gallery_thumbnail">
+            <img src = "../img/thumbnail_Earth.jpg">
         </div>
-        <div class = "gallery_name">
+        <div class = "description">
+        <table>
+            <tr>
+                <td>Ziemia</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                <form action = "../galleries/Earth.php" method = "post">
+                    <input type = "submit" value = "Obejrzyj">
+                </form>
+                </td>
+            </tr>
+        <table>
         </div>
-        <div class = "gallery_objectCount">
-        </div>
-        <div class = "gallery_button">
-        </div>
-    </div>
+    </div>*/
+?>
 </div>
 </body>
 

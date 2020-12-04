@@ -15,7 +15,9 @@
             <?php
 
             $btns_segment = '';
-            session_start();
+            if (session_status() == PHP_SESSION_NONE) {
+                session_start();
+            }
             if (!isset($_SESSION["login"])) {
 
                 $btns_segment = '<a href="' . SITE_URL_ROOT . 'authentication/login.php">Zaloguj Się</a>'

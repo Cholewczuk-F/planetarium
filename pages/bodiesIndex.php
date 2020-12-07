@@ -48,25 +48,7 @@ var_dump($bodiesArray);
                 echo '</form>';
 
     }
-        /*<div class = "gallery_thumbnail">
-            <img src = "../img/thumbnail_Earth.jpg">
-        </div>
-        <div class = "description">
-        <table>
-            <tr>
-                <td>Ziemia</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                <form action = "../galleries/Earth.php" method = "post">
-                    <input type = "submit" value = "Obejrzyj">
-                </form>
-                </td>
-            </tr>
-        <table>
-        </div>
-    </div>*/
+        
 ?>
 </div>
 </body>

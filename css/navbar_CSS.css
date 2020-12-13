@@ -5,6 +5,12 @@
   margin-left: 10%;
   margin-right: 10%;
 }
+.navbar_container img {
+  position:absolute;
+  top: 9.5%;
+  left: 50%;
+  transform:translate(-50%, -50%);
+}
 .navbar_btns {
   background-color: rgba(104, 22, 63, 1);
   height: 25px;
@@ -16,9 +22,6 @@
   color: white;
   margin-left: 70px;
   margin-right: 70px;
-}
-.navbar_logo {
-  margin-left: 41%;
 }
 .navbar_logo img {
   width: 100px;

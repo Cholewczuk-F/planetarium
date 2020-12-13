@@ -15,7 +15,9 @@ include(SITE_ROOT . 'templates/footer.html');
         <div class="forum_page">
             <a href="pages/forumIndex.php">Forum</a>
         </div>
-        <div class="bodies_page_container">
+    </div>
+    <div class="bodies_page_container">
+        <div class="bodies_page">
             <a href="pages/bodiesIndex.php">Planetarium</a>
         </div>
     </div>

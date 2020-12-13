@@ -1,6 +1,7 @@
 <?php
 include_once('config.php');
 include(SITE_ROOT . 'templates/header.php');
+include(SITE_ROOT . 'templates/footer.html');
 
 ?>
 <html>

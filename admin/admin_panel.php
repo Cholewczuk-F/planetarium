@@ -1,7 +1,9 @@
 <?php
 include('../db/db_connect.php');
 include('../config.php');
-include('../templates/header.php');
+include(SITE_ROOT . 'templates/header.php');
+include(SITE_ROOT . 'templates/footer.html');
+
 require(SITE_ROOT . 'authentication/auth_session_admin.php'); // elevated authentication level require
 
 if(isset($_REQUEST['edited_role_value'])) {
@@ -37,7 +39,7 @@ if(isset($_REQUEST['celestialBodyID_to_Disapprove'])) {
 if(isset($_REQUEST['celestialBody_to_Delete'])) {
     $query = "DELETE FROM celestialbodies WHERE body_ID ='".$_REQUEST['celestialBody_to_Delete']."'";
     if($con->query($query) === FALSE) {
-        echo "Something went wrong with deleting a celestial body: " . $con->error;
+        echo "Something went wrong while deleting a celestial body: " . $con->error;
     }
 }
 ?>

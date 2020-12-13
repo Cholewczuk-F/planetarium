@@ -27,25 +27,27 @@ var_dump($bodiesArray);
 <?php
     $sql = "SELECT * FROM celestialbodies";
     foreach($con->query($sql) as $row) {
-        echo '<div class = "gallery_container">';
-            echo '<div class = "gallery_thumbnail">';
-                if(file_exists("../img/thumbnail_".$bodiesArray[$row['body_ID']].".png")) {
-                    echo '<img src = "../img/thumbnail_'.$bodiesArray[$row['body_ID']].'.png">';
-                } elseif(file_exists("../img/thumbnail_".$bodiesArray[$row['body_ID']].".jpg")) {
-                    echo '<img src = "../img/thumbnail_'.$bodiesArray[$row['body_ID']].'.jpg">';
-                } else {
-                    echo "chuj";
-                }
-            echo '</div>';
-            echo '<div class = "gallery_name">';
-                echo '<p class = "gallery_p">';
-                    echo $row["name"];
-                echo '</p>';
-            echo '</div>';
-            echo '<div class = "gallery_submitButton">';
-                echo '<form action = "body_'.$row["body_ID"].' method = "GET">';
-                    echo '<input type = "submit" value = "Sprawdź">';
-                echo '</form>';
+        if($row['isApproved'] == 1) {
+            echo '<div class = "gallery_container">';
+                echo '<div class = "gallery_thumbnail">';
+                    if(file_exists("../img/thumbnail_".$bodiesArray[$row['body_ID']].".png")) {
+                        echo '<img src = "../img/thumbnail_'.$bodiesArray[$row['body_ID']].'.png">';
+                    } elseif(file_exists("../img/thumbnail_".$bodiesArray[$row['body_ID']].".jpg")) {
+                        echo '<img src = "../img/thumbnail_'.$bodiesArray[$row['body_ID']].'.jpg">';
+                    } else {
+                        echo "chuj";
+                    }
+                echo '</div>';
+                echo '<div class = "gallery_name">';
+                    echo '<p class = "gallery_p">';
+                        echo $row["name"];
+                    echo '</p>';
+                echo '</div>';
+                echo '<div class = "gallery_submitButton">';
+                    echo '<form action = "body_'.$row["body_ID"].'" method = "GET">';
+                        echo '<input type = "submit" value = "Sprawdź">';
+                    echo '</form>';
+        }
 
     }
         

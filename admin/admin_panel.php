@@ -26,17 +26,20 @@ if(isset($_REQUEST['celestialBodyID_to_Approve'])) {
             echo $con->error;
         }
     }
-    
-    
 }
 if(isset($_REQUEST['celestialBodyID_to_Disapprove'])) {
-    $query = "UPDATE celestialbodies SET isApproved = 0 WHERE body_ID = ".$_REQUEST['celestialBodyID_to_Approve']."'";
+    $query = "DELETE FROM celestialbodies WHERE body_ID = '".$_REQUEST['celestialBodyID_to_Disapprove']."'";
     if($con->query($query) === FALSE) {
         echo "Something went wrong with: " . $con->error;
     }
     
 }
-
+if(isset($_REQUEST['celestialBody_to_Delete'])) {
+    $query = "DELETE FROM celestialbodies WHERE body_ID ='".$_REQUEST['celestialBody_to_Delete']."'";
+    if($con->query($query) === FALSE) {
+        echo "Something went wrong with deleting a celestial body: " . $con->error;
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -48,7 +51,7 @@ if(isset($_REQUEST['celestialBodyID_to_Disapprove'])) {
 </head>
 
 <body>
-    <div class = "main_page_container">
+    <div class = "main_page-container">
         <div class = "user_table_container">
             <div class = "user_table">
                 <table>
@@ -93,8 +96,8 @@ if(isset($_REQUEST['celestialBodyID_to_Disapprove'])) {
                 </table>
             </div>
         </div>
-        <div class = "planets_to_review_table_container">
-            <div class = "planets_to_review_table">
+        <div class = "celestialBodies_to_review_table_container">
+            <div class = "celestialBodies_to_review_table">
                 <table>
                     <thead>
                         <th>Nazwa obiektu</th>
@@ -105,9 +108,8 @@ if(isset($_REQUEST['celestialBodyID_to_Disapprove'])) {
                     </thead>
                     <tbody>
                         <?php
-                            $sql = 'SELECT * FROM celestialbodies';
+                            $sql = 'SELECT * FROM celestialbodies WHERE isApproved="0"';
                             foreach($con->query($sql) as $row) {
-                                if($row["isApproved"] == 0) {
                                     echo '<tr>';
                                         echo '<td>'.$row['name'].'</td>';
                                         echo '<td>'.$row['reviewer'].'</td>';
@@ -118,10 +120,7 @@ if(isset($_REQUEST['celestialBodyID_to_Disapprove'])) {
                                         <input type = "hidden" value = <?php echo $row["body_ID"]; ?> name = "celestialBodyID_to_Approve">
                                         <input type = "submit" value = "Zatwierdź">
                                     </form>
-                                    <?php
-                                        echo '</td>';
-                                        echo '<td>';
-                                    ?>
+                                    </td><td>
                                     <form action = "admin_panel.php" method = "post">
                                         <input type = "hidden" value = <?php echo $row["body_ID"]; ?> name = "celestialBodyID_to_Disapprove">
                                         <input type = "submit" value = "Odrzuć">
@@ -129,15 +128,47 @@ if(isset($_REQUEST['celestialBodyID_to_Disapprove'])) {
                                     <?php
                                         echo '</td>';
                                     echo '</tr>';
-                                }
                             }
-
                         ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class = "approved_celestialBodies_container">
+            <div class = "approved_celestialBodies_table">
+                <table>
+                    <thead>
+                        <th>Nazwa obiektu</th>
+                        <th>Typ widmowy</th>
+                        <th>Data dodania</th>
+                        <th>Edytuj</th>
+                        <th>Usuń</th>
+                    </thead>
+                    <tbody>
+                        <?php
+                            $sql = 'SELECT * FROM celestialbodies WHERE isApproved="1"';
+                            foreach($con->query($sql) as $row) {
+                                echo '<tr>';
+                                    echo '<td>'.$row['name'].'</td>';
+                                    echo '<td>'.$row['spectral_type'].'</td>';
+                                    echo '<td>'.$row['create_date'].'</td>';
+                                    echo '<td>';
+                                ?>
+                                <form action = "admin_celestialbody_edit.php" method = "get">
+                                    <input type = "hidden" value = <?php echo $row["body_ID"]; ?> name = "celestialBody_to_Edit">
+                                    <input type = "submit" value = "Edytuj">
+                                </form>
+                                </td><td>
+                                <form action = "admin_panel.php" method = "post">
+                                    <input type = "hidden" value = <?php echo $row["body_ID"]; ?> name = "celestialBody_to_Delete">
+                                    <input type = "submit" value = "Usuń">
+                                </form>
+                                </td></tr>
+                        <?php } ?>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
 </body>
-
 </html>

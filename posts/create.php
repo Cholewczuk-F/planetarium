@@ -25,6 +25,7 @@ function cancel_photos($con, $photos)
             print_r("delete: " . $photo['path']);
             unlink($photo['path']);
         }
+        $con->query("DELETE FROM images WHERE image_ID LIKE " . $photo['id']);
     }
 }
 
@@ -166,7 +167,7 @@ if (isset($_POST['submit'])) {
                 }
 
                 // CREATE PHOTOS ENTRIES FOR GALLERY
-                print_r($photos);
+                // print_r($photos);
 
                 $photos_added = array();
                 foreach ($photos as $photo) {
@@ -194,9 +195,10 @@ if (isset($_POST['submit'])) {
                         break;
                     }
                 }
-                cancel_photos($con, $photos_added);
+                // cancel_photos($con, $photos_added);
             }
 
+            // redirect + dodawanie celestialbody
             // // REDIRECT USER
             // if ($new_body) {
             //     header('Location: ' . SITE_URL_ROOT . 'planets/create.php?post_id=' . $post_id);

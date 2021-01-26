@@ -2,6 +2,8 @@
 include_once('../config.php');
 require(SITE_ROOT . 'db/db_connect.php');
 include(SITE_ROOT . 'templates/header.php');
+include(SITE_ROOT . 'templates/footer.html');
+
 
 // When form submitted, check and create user session.
 if (isset($_POST['login'])) {

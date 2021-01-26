@@ -1,7 +1,13 @@
+
+
+/* code for user table scroll width ajustable height, edit line tbody { height: [x]px; } */
 table {
     width: 716px; /* 140px * 5 column + 16px scrollbar width */
     width: 816px; 
     border-spacing: 0;
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
 }
 
 tbody, thead tr { display: block; }
@@ -11,6 +17,17 @@ tbody {
     overflow-y: auto;
     overflow-x: hidden;
 }
+th {
+    border-color:  black;
+    border-width: 1px;
+    border-style: solid;
+}
+td {
+    text-align: center;
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+}
 
 tbody td, thead th {
     width: 160px;
@@ -18,4 +35,14 @@ tbody td, thead th {
 
 thead th:last-child {
     width: 176px; /* 140px + 16px scrollbar width */
+}
+/* end of user table code */
+
+.user_table {
+    background-color: rgba(88, 24, 69, 1);
+    margin-top: 50px;
+    width: 1000px;
+    padding-left: 100px;
+    margin-left: 100px;
+    
 }

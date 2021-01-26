@@ -2,6 +2,8 @@
 include_once('../config.php');
 include(SITE_ROOT . 'db/db_connect.php');
 include(SITE_ROOT . 'templates/header.php');
+include(SITE_ROOT . 'templates/footer.html');
+
 
 
 $err = array('user_login' => '', 'email' => '', 'password' => '', 'add' => '');

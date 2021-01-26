@@ -1,6 +1,10 @@
 <?php
 $root = pathinfo($_SERVER['SCRIPT_FILENAME']);
-define('BASE_FOLDER', basename($root['dirname']));
-define('SITE_ROOT',    realpath(dirname(__FILE__)) . '/');
-define('SITE_URL',    'http://' . $_SERVER['HTTP_HOST'] . '/' . BASE_FOLDER . '/');
-define('SITE_URL_ROOT', 'http://' . $_SERVER['HTTP_HOST'] . '/' . 'planetarium/');
+define('PROJECT_NAME', 'planetarium');
+define('BASE_FOLDER', basename($root['dirname'])); // planetarium/posts/ => 'posts'
+define('SITE_ROOT',    realpath(dirname(__FILE__)) . '/'); // C:\xampp\htdocs\planetarium/
+
+define('BASE_URL',    'http://' . $_SERVER['HTTP_HOST'] . '/' . PROJECT_NAME . '/' . BASE_FOLDER . '/'); // http://localhost/planetarium/posts/
+define('SITE_URL_ROOT', 'http://' . $_SERVER['HTTP_HOST'] . '/' . PROJECT_NAME . '/'); // https://localhost/planetarium/
+
+define('POSTS_IMAGES', 'img/posts/');

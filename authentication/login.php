@@ -16,7 +16,7 @@ if (isset($_POST['login'])) {
     // Check user is exist in the database
     $query    = "SELECT * FROM `users` WHERE user_login='$login'
                      AND user_hash='" . md5($password) . "'";
-    $result = mysqli_query($con, $query) or die(mysqli_error());
+    $result = mysqli_query($con, $query);
     $rows = mysqli_num_rows($result);
 
     if ($rows == 1) {

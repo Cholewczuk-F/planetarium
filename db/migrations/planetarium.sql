@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 17, 2020 at 01:19 AM
+-- Generation Time: Dec 04, 2020 at 04:14 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -33,6 +33,13 @@ CREATE TABLE `categories` (
   `mod_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`category_ID`, `name`, `mod_id`) VALUES
+(101, 'Earth Gallery', 8);
+
 -- --------------------------------------------------------
 
 --
@@ -47,8 +54,18 @@ CREATE TABLE `celestialbodies` (
   `distance` float NOT NULL,
   `primary_approval_id` int(11) NOT NULL,
   `isApproved` tinyint(1) NOT NULL,
-  `reviewer` int(11) NOT NULL
+  `reviewer` int(11) DEFAULT NULL,
+  `create_date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+--
+-- Dumping data for table `celestialbodies`
+--
+
+INSERT INTO `celestialbodies` (`body_ID`, `name`, `spectral_type`, `approx_size`, `distance`, `primary_approval_id`, `isApproved`, `reviewer`, `create_date`) VALUES
+(1, 'Ziemia', 'Q', '40,000 km', 0, 1, 1, 8, NULL),
+(2, 'Mars', 'Q', '3389 km', 3.87, 2, 1, 8, NULL),
+(3, 'Twoja stara', 'X', '420', 0, 0, 0, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -68,21 +85,6 @@ CREATE TABLE `comments` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `forumposts`
---
-
-CREATE TABLE `forumposts` (
-  `post_ID` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `post_content` varchar(2555) COLLATE utf8_polish_ci NOT NULL,
-  `post_date` date NOT NULL,
-  `category_id` int(11) NOT NULL,
-  `body_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `galleries`
 --
 
@@ -96,7 +98,8 @@ CREATE TABLE `galleries` (
 --
 
 INSERT INTO `galleries` (`gallery_ID`, `post_id`) VALUES
-(1, NULL);
+(1, NULL),
+(2, 1);
 
 -- --------------------------------------------------------
 
@@ -117,6 +120,30 @@ CREATE TABLE `images` (
 
 INSERT INTO `images` (`image_ID`, `gallery_id`, `image_name`, `image_path`) VALUES
 (1, 0, 'blank_avatar.jpg', '/img/blank_avatar.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `posts`
+--
+
+CREATE TABLE `posts` (
+  `post_ID` int(11) NOT NULL,
+  `title` varchar(255) COLLATE utf8_polish_ci NOT NULL,
+  `content` varchar(2555) COLLATE utf8_polish_ci NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `category_id` int(11) NOT NULL,
+  `body_id` int(11) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+--
+-- Dumping data for table `posts`
+--
+
+INSERT INTO `posts` (`post_ID`, `title`, `content`, `user_id`, `category_id`, `body_id`, `created_at`) VALUES
+(1, 'asd', 'Earth upside down', 3, 101, 1, '2020-11-23 23:00:00'),
+(2, 'asd', 'Earth at night', 3, 101, 1, '2020-11-23 23:00:00');
 
 -- --------------------------------------------------------
 
@@ -155,6 +182,17 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
 --
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`user_ID`, `user_login`, `email`, `role_id`, `user_img`, `user_hash`, `create_date`) VALUES
+(3, 'Derkarus', 'dasda@gmail.com', 1, 1, 0x3633316262636365306531326636353435313430636432646363313732653937, '2020-11-29'),
+(6, 'adssadas', 'asdasda', 2, 1, 0x6434316438636439386630306232303465393830303939386563663834323765, '2020-11-29'),
+(7, 'tmp1', 'asdasd', 3, 1, 0x3839646566616536373661626433653361343262343164663137633430303936, '2020-11-29'),
+(8, 'tmp2', 'asddasd', 2, 1, 0x6665396631646365376330613733666532613566623963663037626266623739, '2020-11-29'),
+(9, 'tmp3', 'safdfa', 3, 1, 0x6136633235633935663137646532303866386133616265623137323331643436, '2020-11-29');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -181,15 +219,6 @@ ALTER TABLE `comments`
   ADD KEY `user_id` (`user_id`);
 
 --
--- Indexes for table `forumposts`
---
-ALTER TABLE `forumposts`
-  ADD PRIMARY KEY (`post_ID`),
-  ADD KEY `user_id` (`user_id`,`category_id`,`body_id`),
-  ADD KEY `ForumPosts_ibfk_1` (`body_id`),
-  ADD KEY `ForumPosts_ibfk_2` (`category_id`);
-
---
 -- Indexes for table `galleries`
 --
 ALTER TABLE `galleries`
@@ -202,6 +231,15 @@ ALTER TABLE `galleries`
 ALTER TABLE `images`
   ADD PRIMARY KEY (`image_ID`),
   ADD KEY `gallery_id` (`gallery_id`);
+
+--
+-- Indexes for table `posts`
+--
+ALTER TABLE `posts`
+  ADD PRIMARY KEY (`post_ID`),
+  ADD KEY `user_id` (`user_id`,`category_id`,`body_id`),
+  ADD KEY `ForumPosts_ibfk_1` (`body_id`),
+  ADD KEY `ForumPosts_ibfk_2` (`category_id`);
 
 --
 -- Indexes for table `roles`
@@ -225,13 +263,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `category_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `category_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
 
 --
 -- AUTO_INCREMENT for table `celestialbodies`
 --
 ALTER TABLE `celestialbodies`
-  MODIFY `body_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `body_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `comments`
@@ -240,22 +278,22 @@ ALTER TABLE `comments`
   MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `forumposts`
---
-ALTER TABLE `forumposts`
-  MODIFY `post_ID` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `galleries`
 --
 ALTER TABLE `galleries`
-  MODIFY `gallery_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `gallery_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
   MODIFY `image_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `posts`
+--
+ALTER TABLE `posts`
+  MODIFY `post_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `roles`
@@ -267,7 +305,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `user_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Constraints for dumped tables
@@ -289,22 +327,14 @@ ALTER TABLE `celestialbodies`
 -- Constraints for table `comments`
 --
 ALTER TABLE `comments`
-  ADD CONSTRAINT `Comments_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `forumposts` (`post_ID`),
+  ADD CONSTRAINT `Comments_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `posts` (`post_ID`),
   ADD CONSTRAINT `Comments_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_ID`);
-
---
--- Constraints for table `forumposts`
---
-ALTER TABLE `forumposts`
-  ADD CONSTRAINT `ForumPosts_ibfk_1` FOREIGN KEY (`body_id`) REFERENCES `celestialbodies` (`body_ID`),
-  ADD CONSTRAINT `ForumPosts_ibfk_2` FOREIGN KEY (`category_id`) REFERENCES `categories` (`category_ID`),
-  ADD CONSTRAINT `ForumPosts_ibfk_3` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_ID`);
 
 --
 -- Constraints for table `galleries`
 --
 ALTER TABLE `galleries`
-  ADD CONSTRAINT `Galleries_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `forumposts` (`post_ID`);
+  ADD CONSTRAINT `Galleries_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `posts` (`post_ID`);
 
 --
 -- Constraints for table `images`
@@ -313,11 +343,19 @@ ALTER TABLE `images`
   ADD CONSTRAINT `Images_ibfk_1` FOREIGN KEY (`gallery_id`) REFERENCES `galleries` (`gallery_ID`);
 
 --
+-- Constraints for table `posts`
+--
+ALTER TABLE `posts`
+  ADD CONSTRAINT `ForumPosts_ibfk_1` FOREIGN KEY (`body_id`) REFERENCES `celestialbodies` (`body_ID`),
+  ADD CONSTRAINT `ForumPosts_ibfk_2` FOREIGN KEY (`category_id`) REFERENCES `categories` (`category_ID`),
+  ADD CONSTRAINT `ForumPosts_ibfk_3` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_ID`);
+
+--
 -- Constraints for table `users`
 --
 ALTER TABLE `users`
-  ADD CONSTRAINT `role_id` FOREIGN KEY (`role_id`) REFERENCES `roles` (`role_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `user_img` FOREIGN KEY (`user_img`) REFERENCES `images` (`image_ID`) ON DELETE SET NULL ON UPDATE NO ACTION;
+  ADD CONSTRAINT `role_id` FOREIGN KEY (`role_id`) REFERENCES `roles` (`role_ID`),
+  ADD CONSTRAINT `user_img` FOREIGN KEY (`user_img`) REFERENCES `images` (`image_ID`) ON DELETE SET NULL;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -1,9 +1,46 @@
 .main_page_container {
-    background-color: rgba(88, 24, 69, 1);
+  background-color: rgba(88, 24, 69, 1);
 }
 .msg {
-    background-color: white;
-    width: 400px;
-    margin-left: 43.5%;
-    font-size: 40px;
+  background-color: white;
+  width: 400px;
+  margin-left: 43.5%;
+  font-size: 41px;
+}
+
+#page_content {
+  margin-top: 3%;
+  margin-left: 13%;
+  margin-right: 13%;
+  background-color: lightgray;
+  min-height: 500px;
+}
+
+#content_heading {
+  padding-top: 50px;
+  text-align: center;
+}
+
+#content {
+  padding-left: 20%;
+  padding-right: 20%;
+}
+
+#content table,
+#content th,
+#content td,
+#content tr {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  width: 100%;
+  border-collapse: collapse;
+  border: solid 1px;
+  padding: 3px;
+}
+
+.content_header {
+  justify-items: center;
+  margin: 0 auto;
+  text-align: center;
 }
